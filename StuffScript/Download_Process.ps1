@@ -17,7 +17,7 @@ $xml = @"
     <action
       activationType="protocol"
       arguments="https://discord.com/users/1086149348414464041"
-      content="Support Dev"/>
+      content="Dev Support Project"/>
 
     <action
       activationType="protocol"
