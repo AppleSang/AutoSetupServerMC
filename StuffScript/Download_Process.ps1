@@ -21,8 +21,8 @@ $xml = @"
 
     <action
       activationType="protocol"
-      arguments="https://papermc.io/"
-      content="PaperMC"/>
+      arguments="https://dsc.gg/wrc"
+      content="Support Us"/>
     
   </actions>
   
@@ -36,7 +36,7 @@ $Dictionary = [System.Collections.Generic.Dictionary[String, String]]::New()
 $Dictionary.Add('progressTitle', 'Hãy Chờ Đợi Tải Và Chạy Các Thứ Cơ Bản')
 $Dictionary.Add('progressValue', '0')
 $Dictionary.Add('progressValueString', '0%/100% File Server')
-$Dictionary.Add('progressStatus', 'Downloading...')
+$Dictionary.Add('progressStatus', 'Đang Tải Và Thiết Lập...')
 $ToastNotification.Data = [Windows.UI.Notifications.NotificationData]::New($Dictionary)
 $ToastNotification.Data.SequenceNumber = 1
 $AppId = '{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\WindowsPowerShell\v1.0\powershell.exe'
@@ -54,10 +54,12 @@ for ($index = 1; $index -le 100; $index++) {
 }
 
 $Dictionary = [System.Collections.Generic.Dictionary[String, String]]::New()
-$Dictionary.Add('progressStatus', 'Completed!')
+$Dictionary.Add('progressStatus', 'Đã Xong Rồi!')
 $NotificationData = [Windows.UI.Notifications.NotificationData]::New($Dictionary)
 $NotificationData.SequenceNumber = 2
+[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier($AppId).Update($NotificationData, 'my_tag')
+
+
 $MediaPlayer = [Windows.Media.Playback.MediaPlayer, Windows.Media, ContentType = WindowsRuntime]::New()
 $MediaPlayer.Source = [Windows.Media.Core.MediaSource]::CreateFromUri('https://github.com/AppleSang/AutoSetupServerMC/raw/refs/heads/master/StuffScript/Dopamine-Streambeat_Short.mp3')
 $MediaPlayer.Play()
-[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier($AppId).Update($NotificationData, 'my_tag')
