@@ -33,9 +33,9 @@ $XmlDocument.loadXml($xml)
 $ToastNotification = [Windows.UI.Notifications.ToastNotification, Windows.UI.Notifications, ContentType = WindowsRuntime]::New($XmlDocument)
 $ToastNotification.Tag = 'my_tag'
 $Dictionary = [System.Collections.Generic.Dictionary[String, String]]::New()
-$Dictionary.Add('progressTitle', 'YouTube')
+$Dictionary.Add('progressTitle', 'Hãy Chờ Đợi Tải Và Chạy Các Thứ Cơ Bản')
 $Dictionary.Add('progressValue', '0')
-$Dictionary.Add('progressValueString', '0/15 videos')
+$Dictionary.Add('progressValueString', '0%/100% File Server')
 $Dictionary.Add('progressStatus', 'Downloading...')
 $ToastNotification.Data = [Windows.UI.Notifications.NotificationData]::New($Dictionary)
 $ToastNotification.Data.SequenceNumber = 1
@@ -47,7 +47,7 @@ for ($index = 1; $index -le 100; $index++) {
   Start-Sleep 1
   $Dictionary = [System.Collections.Generic.Dictionary[String, String]]::New()
   $Dictionary.Add('progressValue', $index / 100)
-  $Dictionary.Add('progressValueString', "$index/100%")
+  $Dictionary.Add('progressValueString', "$index%/ 100%")
   $NotificationData = [Windows.UI.Notifications.NotificationData]::New($Dictionary)
   $NotificationData.SequenceNumber = 2
   [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier($AppId).Update($NotificationData, 'my_tag')
