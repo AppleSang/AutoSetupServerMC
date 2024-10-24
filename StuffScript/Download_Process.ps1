@@ -15,14 +15,14 @@ $xml = @"
   <actions>
 
     <action
-      activationType="background"
-      arguments="action=pauseDownload&amp;downloadId=9438108"
-      content="A"/>
+      activationType="protocol"
+      arguments="https://discord.com/users/1086149348414464041"
+      content="Support Dev"/>
 
     <action
-      activationType="background"
-      arguments="action=cancelDownload&amp;downloadId=9438108"
-      content="Cancel"/>
+      activationType="protocol"
+      arguments="https://papermc.io/"
+      content="PaperMC"/>
     
   </actions>
   
@@ -43,11 +43,11 @@ $AppId = '{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\WindowsPowerShell\v1.0\powershe
 [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime]::CreateToastNotifier($AppId).Show($ToastNotification)
 
 
-for ($index = 1; $index -le 15; $index++) {
+for ($index = 1; $index -le 100; $index++) {
   Start-Sleep 1
   $Dictionary = [System.Collections.Generic.Dictionary[String, String]]::New()
-  $Dictionary.Add('progressValue', $index / 15)
-  $Dictionary.Add('progressValueString', "$index/15 videos")
+  $Dictionary.Add('progressValue', $index / 100)
+  $Dictionary.Add('progressValueString', "$index/100%")
   $NotificationData = [Windows.UI.Notifications.NotificationData]::New($Dictionary)
   $NotificationData.SequenceNumber = 2
   [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier($AppId).Update($NotificationData, 'my_tag')
