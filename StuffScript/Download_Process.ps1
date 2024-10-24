@@ -1,3 +1,6 @@
+cd $env:temp
+Invoke-WebRequest -Uri 'https://media2.giphy.com/media/vsREO0xnzFGEuCH2Nl/200w.gif' -OutFile 'look.gif'
+
 $xml = @"
 <toast launch="action=viewDownload&amp;downloadId=9438108">
   
@@ -9,6 +12,7 @@ $xml = @"
         value="{progressValue}"
         valueStringOverride="{progressValueString}"
         status="{progressStatus}"/>
+        <image src="$env:temp\look.gif"/>
     </binding>
   </visual>
 
@@ -35,7 +39,7 @@ $ToastNotification.Tag = 'my_tag'
 $Dictionary = [System.Collections.Generic.Dictionary[String, String]]::New()
 $Dictionary.Add('progressTitle', 'Hãy Chờ Đợi Tải Và Chạy Các Thứ Cơ Bản')
 $Dictionary.Add('progressValue', '0')
-$Dictionary.Add('progressValueString', '0%/100% Download File Server')
+$Dictionary.Add('progressValueString', '0%/100% File Server')
 $Dictionary.Add('progressStatus', $info)
 $ToastNotification.Data = [Windows.UI.Notifications.NotificationData]::New($Dictionary)
 $ToastNotification.Data.SequenceNumber = 1
