@@ -1,5 +1,5 @@
 $xml = @"
-<toast launch="action=viewFriendRequest&amp;userId=49183">
+<toast launch="action=viewFriendRequest&amp;userId=49183", activationType="protocol" launch="https://www.google.com/">
   <visual>
     <binding template="ToastGeneric">
       <text>=-Welcome To AppleAutoServer-=</text>
