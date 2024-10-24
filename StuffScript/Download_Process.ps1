@@ -35,7 +35,7 @@ $ToastNotification.Tag = 'my_tag'
 $Dictionary = [System.Collections.Generic.Dictionary[String, String]]::New()
 $Dictionary.Add('progressTitle', 'Hãy Chờ Đợi Tải Và Chạy Các Thứ Cơ Bản')
 $Dictionary.Add('progressValue', '0')
-$Dictionary.Add('progressValueString', '0%/100% File Server')
+$Dictionary.Add('progressValueString', '0%/100% Download File Server')
 $Dictionary.Add('progressStatus', $info)
 $ToastNotification.Data = [Windows.UI.Notifications.NotificationData]::New($Dictionary)
 $ToastNotification.Data.SequenceNumber = 1
