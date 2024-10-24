@@ -57,4 +57,7 @@ $Dictionary = [System.Collections.Generic.Dictionary[String, String]]::New()
 $Dictionary.Add('progressStatus', 'Completed!')
 $NotificationData = [Windows.UI.Notifications.NotificationData]::New($Dictionary)
 $NotificationData.SequenceNumber = 2
+$MediaPlayer = [Windows.Media.Playback.MediaPlayer, Windows.Media, ContentType = WindowsRuntime]::New()
+$MediaPlayer.Source = [Windows.Media.Core.MediaSource]::CreateFromUri('https://github.com/AppleSang/AutoSetupServerMC/raw/refs/heads/master/StuffScript/Dopamine-Streambeat_Short.mp3')
+$MediaPlayer.Play()
 [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier($AppId).Update($NotificationData, 'my_tag')
