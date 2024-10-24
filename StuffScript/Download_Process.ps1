@@ -36,7 +36,7 @@ $Dictionary = [System.Collections.Generic.Dictionary[String, String]]::New()
 $Dictionary.Add('progressTitle', 'Hãy Chờ Đợi Tải Và Chạy Các Thứ Cơ Bản')
 $Dictionary.Add('progressValue', '0')
 $Dictionary.Add('progressValueString', '0%/100% File Server')
-$Dictionary.Add('progressStatus', 'Info: Tool Này Nhắm Tới Người Việt')
+$Dictionary.Add('progressStatus', $info)
 $ToastNotification.Data = [Windows.UI.Notifications.NotificationData]::New($Dictionary)
 $ToastNotification.Data.SequenceNumber = 1
 $AppId = '{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\WindowsPowerShell\v1.0\powershell.exe'
