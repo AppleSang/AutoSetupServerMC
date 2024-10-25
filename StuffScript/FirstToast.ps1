@@ -10,7 +10,7 @@ $xml = @"
       <image placement="hero" src="$env:temp\frog.gif"/>
     </binding>
   </visual>
-  
+  <audio silent="true"/>
   <actions>
     <action content="Join Discord Server" activationType="protocol" arguments="https://dsc.gg/wrc" />
   </actions>
