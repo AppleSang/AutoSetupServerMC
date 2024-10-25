@@ -1,7 +1,3 @@
-cd $env:temp
-Invoke-WebRequest -Uri 'https://media.tenor.com/MviKulS1NP0AAAAM/minecraft-microsoft.gif' -OutFile 'frog.gif'
-Invoke-WebRequest -Uri 'https://media.tenor.com/rXMWQ5ng9t0AAAAi/golden-apple-minecraft.gif' -OutFile 'apple.gif'
-
 $xml = @"
 <toast scenario="incomingCall">
   
