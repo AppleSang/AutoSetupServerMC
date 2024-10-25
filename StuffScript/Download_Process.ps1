@@ -1,6 +1,3 @@
-cd $env:temp
-Invoke-WebRequest -Uri 'https://media2.giphy.com/media/vsREO0xnzFGEuCH2Nl/200w.gif' -OutFile 'look.gif'
-
 $xml = @"
 <toast launch="action=viewDownload&amp;downloadId=9438108">
   
