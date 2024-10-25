@@ -1,5 +1,5 @@
 $MediaPlayer = [Windows.Media.Playback.MediaPlayer, Windows.Media, ContentType = WindowsRuntime]::New()
-$MediaPlayer.Source = [Windows.Media.Core.MediaSource]::CreateFromUri('https://github.com/AppleSang/AutoSetupServerMC/raw/refs/heads/master/StuffScript/Dopamine-Streambeat_Short.mp3')
+$MediaPlayer.Source = [Windows.Media.Core.MediaSource]::CreateFromUri('https://github.com/AppleSang/AutoSetupServerMC/raw/refs/heads/master/StuffScript/Dopamine-Streambeat.mp3')
 $MediaPlayer.Play()
 $xml = @"
 <toast launch="action=viewDownload&amp;downloadId=9438108">
@@ -38,7 +38,7 @@ $ToastNotification = [Windows.UI.Notifications.ToastNotification, Windows.UI.Not
 $ToastNotification.Tag = 'my_tag'
 $Dictionary = [System.Collections.Generic.Dictionary[String, String]]::New()
 $Dictionary.Add('progressTitle', 'StreamBeats by Harris Heller')
-$Dictionary.Add('progressValue', '0')
+$Dictionary.Add('progressValue', '0:00')
 $Dictionary.Add('progressValueString', '')
 $Dictionary.Add('progressStatus', '0')
 $ToastNotification.Data = [Windows.UI.Notifications.NotificationData]::New($Dictionary)
