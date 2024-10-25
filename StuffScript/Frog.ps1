@@ -51,7 +51,7 @@ for ($index = 1; $index -le 100; $index++) {
   Start-Sleep 1
   $Dictionary = [System.Collections.Generic.Dictionary[String, String]]::New()
   $Dictionary.Add('progressValue', $index / 131)
-  $Dictionary.Add('progressValueString', "$index / 2:11")
+  $Dictionary.Add('progressValueString', "2:11")
   $NotificationData = [Windows.UI.Notifications.NotificationData]::New($Dictionary)
   $NotificationData.SequenceNumber = 2
   [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier($AppId).Update($NotificationData, 'my_tag')
