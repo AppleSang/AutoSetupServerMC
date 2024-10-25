@@ -1,30 +1,76 @@
-# Define the API URL
-$apiUrl = "https://api.papermc.io/v2/projects/$proj"
+$host.ui.RawUI.WindowTitle = “Tải File Jar Server Từ Paper - $selectedProject”
+# Define the API URL for projects
+$projectsApiUrl = "https://api.papermc.io/v2/projects"
 
-# Fetch the JSON data from the API
-$response = Invoke-RestMethod -Uri $apiUrl
+# Function to validate version selection
+function Get-ValidVersionSelection {
+    param (
+        [array]$versions
+    )
+    
+    while ($true) {
+        # Display available versions with numbers
+        Write-Host "Đang Có Những Phiên Bản:"
+        for ($i = 0; $i -lt $versions.Count; $i++) {
+            Write-Host "$($i + 1): $($versions[$i])"
+        }
 
-# Display available versions
-Write-Host "Hiện Tại Đang Có Những Phiên Bản Sau:"
-for ($i = 0; $i -lt $response.versions.Count; $i++) {
-    Write-Host "$($i + 1): $($response.versions[$i])"
+        # Prompt user to select a version
+        $selection = Read-Host "Hãy Nhập Số Thứ Tự Để Chọn Phiên Bản $selectedProject (Từ 1->$($versions.Count))"
+        
+        # Validate if input is a number
+        if ($selection -match '^\d+$') {
+            $versionIndex = [int]$selection
+            
+            # Check if selection is within valid range
+            if ($versionIndex -ge 1 -and $versionIndex -le $versions.Count) {
+                return $versions[$versionIndex - 1]
+            }
+        }
+        cls
+        Write-Host "Hình Như Bạn Nhập Sai Số Thứ Tự, Hãy Nhập Lại!"
+    }
 }
 
-# Prompt user to select a version
-$versionIndex = Read-Host "Hãy Nhập Số Thứ Tự Để Chọn Phiên Bản "
-$selectedVersion = $response.versions[$versionIndex - 1]
+# Main script
+while ($true) {
+    # Define your project here (e.g., "paper" or "purpur")
+    
+    
+    # Define the API URL for the selected project
+    $apiUrl = "$projectsApiUrl/$selectedProject"
 
-# Fetch builds for the selected version
-$buildsUrl = "https://api.papermc.io/v2/projects/$proj/versions/$selectedVersion/builds"
-$buildsResponse = Invoke-RestMethod -Uri $buildsUrl
+    try {
+        # Fetch the JSON data for the selected project
+        $projectResponse = Invoke-RestMethod -Uri $apiUrl
 
-# Get the latest build number (only the "build" value)
-$latestBuild = $buildsResponse.builds[-1].build
+        # Get valid version selection using the function
+        $selectedVersion = Get-ValidVersionSelection -versions $projectResponse.versions
 
-# Construct the download URL using the latest build number
-$downloadUrl = "https://api.papermc.io/v2/projects/$proj/versions/$selectedVersion/builds/$latestBuild/downloads/$proj-$selectedVersion-$latestBuild.jar"
+        # Fetch builds for the selected version
+        $buildsUrl = "$apiUrl/versions/$selectedVersion/builds"
+        $buildsResponse = Invoke-RestMethod -Uri $buildsUrl
 
-# Download the paper.jar file
-Invoke-WebRequest -Uri $downloadUrl -OutFile "server.jar"
+        # Get the latest build number
+        $latestBuild = $buildsResponse.builds[-1].build
 
-Write-Host "Bạn Đã Tải $proj Với Phiên $selectedVersion, Bản Build $latestBuild"
+        # Construct the download URL for the latest build
+        $downloadUrl = "$apiUrl/versions/$selectedVersion/builds/$latestBuild/downloads/$selectedProject-$selectedVersion-$latestBuild.jar"
+
+        # Download the file
+        Write-Host "Đang Tải $selectedProject Với Phiên Bản $selectedVersion (build $latestBuild)..."
+        cd $env:temp\AppleAsset
+        Invoke-WebRequest -Uri $downloadUrl -OutFile "server.jar"
+
+        Write-Host "Đã Tải $selectedProject-$selectedVersion-$latestBuild.jar Thành Công"
+        break  # Exit the loop after successful download
+    }
+    catch {
+        Write-Host "Đã Có Lỗi Xảy Ra: $($_.Exception.Message)"
+        Write-Host "Bạn Muốn Chạy Lại Quá Trình Không? (Y/N) "
+        $retry = Read-Host
+        if ($retry -ne "Y" -and $retry -ne "y") {
+            break
+        }
+    }
+}
