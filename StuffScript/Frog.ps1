@@ -47,7 +47,7 @@ $AppId = '{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\WindowsPowerShell\v1.0\powershe
 [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime]::CreateToastNotifier($AppId).Show($ToastNotification)
 
 
-for ($index = 1; $index -le 100; $index++) {
+for ($index = 1; $index -le 131; $index++) {
   Start-Sleep 1
   $Dictionary = [System.Collections.Generic.Dictionary[String, String]]::New()
   $Dictionary.Add('progressValue', $index / 131)
