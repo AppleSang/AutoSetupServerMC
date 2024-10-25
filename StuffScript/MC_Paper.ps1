@@ -11,7 +11,7 @@ for ($i = 0; $i -lt $response.versions.Count; $i++) {
 }
 
 # Prompt user to select a version
-$versionIndex = Read-Host "Select a version number to download"
+$versionIndex = Read-Host "Hãy Nhập Số Thứ Tự Để Chọn Phiên Bản "
 $selectedVersion = $response.versions[$versionIndex - 1]
 
 # Fetch builds for the selected version
