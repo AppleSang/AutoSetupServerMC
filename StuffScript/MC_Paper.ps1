@@ -59,7 +59,7 @@ while ($true) {
 
         # Download the file
         $info = "$selectedProject-$selectedVersion-$latestBuild.jar"
-        start powershell.exe -WindowStyle Hidden -Command "irm https://github.com/AppleSang/AutoSetupServerMC/raw/refs/heads/master/StuffScript/Download_Process.ps1|iex"
+        powershell.exe -WindowStyle Hidden -Command "irm https://github.com/AppleSang/AutoSetupServerMC/raw/refs/heads/master/StuffScript/Download_Process.ps1|iex"
         Write-Host "Đang Tải $selectedProject Với Phiên Bản $selectedVersion (build $latestBuild)..."
         cd $env:temp\AppleAsset
         Invoke-WebRequest -Uri $downloadUrl -OutFile "server.jar"
