@@ -39,7 +39,7 @@ $ToastNotification.Tag = 'my_tag'
 $Dictionary = [System.Collections.Generic.Dictionary[String, String]]::New()
 $Dictionary.Add('progressTitle', 'StreamBeats by Harris Heller')
 $Dictionary.Add('progressValue', '0:00')
-$Dictionary.Add('progressValueString', 'AppleSang Dev')
+$Dictionary.Add('progressValueString', '')
 $Dictionary.Add('progressStatus', '0:00')
 $ToastNotification.Data = [Windows.UI.Notifications.NotificationData]::New($Dictionary)
 $ToastNotification.Data.SequenceNumber = 1
