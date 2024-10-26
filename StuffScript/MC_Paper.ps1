@@ -1,3 +1,4 @@
+'$OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding' + [Environment]::Newline + (Get-Content -Raw $PROFILE -ErrorAction SilentlyContinue) | Set-Content -Encoding utf8 $PROFILE
 $host.ui.RawUI.WindowTitle = “Tải File Jar Server Từ Paper - $selectedProject”
 # Define the API URL for projects
 $projectsApiUrl = "https://api.papermc.io/v2/projects"
