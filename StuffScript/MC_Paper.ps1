@@ -77,3 +77,4 @@ while ($true) {
         }
     }
 }
+exit
