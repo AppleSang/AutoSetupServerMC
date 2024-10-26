@@ -1,5 +1,11 @@
-'$OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding' + [Environment]::Newline + (Get-Content -Raw $PROFILE -ErrorAction SilentlyContinue) | Set-Content -Encoding utf8 $PROFILE
-$host.ui.RawUI.WindowTitle = “Tải File Jar Server Từ Paper - $selectedProject”
+$regPath = "HKCU\Console"
+Set-ItemProperty -Path $regPath -Name "FaceName" -Value "Consolas" -Force
+Set-ItemProperty -Path $regPath -Name "FontSize" -Value 200 -Force
+Set-ItemProperty -Path $regPath -Name "FontWeight" -Value 400 -Force
+
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+
+
 # Define the API URL for projects
 $projectsApiUrl = "https://api.papermc.io/v2/projects"
 
