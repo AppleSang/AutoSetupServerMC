@@ -1,10 +1,4 @@
-$regPath = "HKCU\Console"
-Set-ItemProperty -Path $regPath -Name "FaceName" -Value "Consolas" -Force
-Set-ItemProperty -Path $regPath -Name "FontSize" -Value 200 -Force
-Set-ItemProperty -Path $regPath -Name "FontWeight" -Value 400 -Force
-
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-
 
 # Define the API URL for projects
 $projectsApiUrl = "https://api.papermc.io/v2/projects"
