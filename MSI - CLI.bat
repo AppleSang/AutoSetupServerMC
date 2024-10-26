@@ -68,8 +68,8 @@ if "%choo%"=="2" goto Menu
 setlocal
 
 :: Define the URL for the JDK installer
-set "jdk_url=https://download.oracle.com/java/22/archive/jdk-22.0.2_windows-x64_bin.msi"
-set "jdk_installer=%TEMP%\AppleAsset\jdk-22.0.2_windows-x64_bin.msi"
+set "jdk_url=https://cdn.azul.com/zulu/bin/zulu22.32.15-ca-jdk22.0.2-win_x64.msi"
+set "jdk_installer=%TEMP%\AppleAsset\zulu22.32.15-ca-jdk22.0.2-win_x64.msi"
 
 :: Check if Java is installed and get the version
 for /f "tokens=2 delims=." %%i in ('java -version 2^>^&1 ^| findstr /i "java version"') do (
