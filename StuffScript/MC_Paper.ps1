@@ -62,7 +62,7 @@ while ($true) {
         powershell.exe -WindowStyle Hidden -Command "$info = "$selectedProject-$selectedVersion-$latestBuild.jar"; irm https://github.com/AppleSang/AutoSetupServerMC/raw/refs/heads/master/StuffScript/Download_Process.ps1|iex"
         Write-Host "Đang Tải $selectedProject Với Phiên Bản $selectedVersion (build $latestBuild)..."
         cd $env:temp\AppleAsset
-        Invoke-WebRequest -Uri $downloadUrl -OutFile "server.jar"
+        Start-BitsTransfer -Source $downloadUrl -Destination "server.jar"
 
         Write-Host "Đã Tải $selectedProject-$selectedVersion-$latestBuild.jar Thành Công"
         break  # Exit the loop after successful download
