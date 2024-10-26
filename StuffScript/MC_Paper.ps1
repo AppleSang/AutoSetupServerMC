@@ -59,7 +59,6 @@ while ($true) {
 
         # Download the file
         
-        powershell.exe -WindowStyle Hidden -Command "$info = "$selectedProject-$selectedVersion-$latestBuild.jar"; irm https://github.com/AppleSang/AutoSetupServerMC/raw/refs/heads/master/StuffScript/Download_Process.ps1|iex"
         Write-Host "Đang Tải $selectedProject Với Phiên Bản $selectedVersion (build $latestBuild)..."
         cd $env:temp\AppleAsset
         Start-BitsTransfer -Source $downloadUrl -Destination "server.jar"
